@@ -1,7 +1,5 @@
 # Hiring Assistant Chatbot
 
-# Hiring Assistant Chatbot
-
 ## Project Overview
 The Hiring Assistant chatbot is designed to streamline technical interviews by acting as a personal talent scout. It can conduct interactive Q&A sessions, generate structured responses, and store the entire conversation in a MongoDB database.
 
@@ -18,8 +16,9 @@ The Hiring Assistant chatbot is designed to streamline technical interviews by a
    ```bash
    pip install -r requirements.txt
 4. **Set up environment variables:**
+   ```bash
    GOOGLE_API_KEY: Your Google Generative AI API key.
-5. **Run the Application:**
+6. **Run the Application:**
    ```bash
    python app.py
 
@@ -50,12 +49,12 @@ Prompts were carefully crafted to handle both information gathering and technica
 ## Challenges & Solutions
 
 1. **Structured Response Parsing:**
-- Challenge: Ensuring the AI response is in a structured JSON format.
-- Solution: Used genai.GenerationConfig with a response schema to enforce the structure.
+   - Challenge: Ensuring the AI response is in a structured JSON format.
+   - Solution: Used genai.GenerationConfig with a response schema to enforce the structure.
   
 2. **Conversation Storage:**
-- Challenge: Storing and retrieving conversations in a scalable way.
-- Solution: MongoDB Atlas was chosen for its flexibility and scalability.
+   - Challenge: Storing and retrieving conversations in a scalable way.
+   - Solution: MongoDB Atlas was chosen for its flexibility and scalability.
   
 ## Future Enhancements
 - Add support for more interview topics.
