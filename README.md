@@ -16,9 +16,10 @@ The Hiring Assistant chatbot is designed to streamline technical interviews by a
    ```bash
    pip install -r requirements.txt
 4. **Set up environment variables:**
+   To get the Key: [URL](https://aistudio.google.com/prompts/new_chat)
    ```bash
    GOOGLE_API_KEY: Your Google Generative AI API key.
-   To get key: [https://aistudio.google.com/prompts/new_chat](url)
+   
 6. **Run the Application:**
    ```bash
    python main.py
