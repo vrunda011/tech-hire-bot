@@ -28,14 +28,14 @@ prompt = prompts.ChatPromptTemplate.from_messages(
     ]
 )
 
-def _get_question_ids(questionnaire: list[dict]):
+def get_question_ids(questionnaire: list[dict]):
     """Gets the question ids from questionnaire."""
     return [question["index"] for question in questionnaire]
 
-question_ids = _get_question_ids(questionnaire=questionnaire.QUESTIONNAIRE)
+question_ids = get_question_ids(questionnaire=questionnaire.QUESTIONNAIRE)
 latest_answers = dict()
 
-def _build_question_md(questionnaire, latest_answers):
+def build_question_md(questionnaire, latest_answers):
     """Renders questions and received answers as markdown table."""
     # Convert questions and answers to markdown table.
     qa_df = pd.DataFrame(data=questionnaire)
@@ -60,7 +60,7 @@ genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 ai_response_key = "next_ai_response_for_human"
 required_properties = [question["index"] for question in questionnaire.QUESTIONNAIRE]
 
-def _get_structured_generation_config(required_properties: list[str], ai_response_key):
+def get_structured_generation_config(required_properties: list[str], ai_response_key):
     """Returns a generation config to get structured output from gemini."""
     properties = {
         key: {"type": "string"} for key in required_properties + [ai_response_key]
@@ -87,7 +87,7 @@ generation_config = {
 # Initialize the generative model
 model = genai.GenerativeModel(
     model_name="gemini-2.0-flash-exp",
-    generation_config=_get_structured_generation_config(required_properties, ai_response_key),
+    generation_config=get_structured_generation_config(required_properties, ai_response_key),
 )
 
 def convert_history(history):
@@ -140,7 +140,7 @@ def predict(message, history):
 
     prompt_text = prompt.format(
         chat_history=chat_history,
-        questions=_build_question_md(questionnaire.QUESTIONNAIRE, latest_answers),
+        questions=build_question_md(questionnaire.QUESTIONNAIRE, latest_answers),
     )
 
     response = model.generate_content(prompt_text)
