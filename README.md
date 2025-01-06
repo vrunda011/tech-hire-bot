@@ -7,7 +7,7 @@ The Hiring Assistant chatbot is designed to streamline technical interviews by a
 1. **Clone the repository:**
    ```bash
    git clone <repository-url>
-   cd hiring-assistant-chatbot
+   cd tech-hire-bot
 2. **Set up a virtual environment:**
    ```bash
    python -m venv venv
